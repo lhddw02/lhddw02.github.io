@@ -3,10 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <meta name="description" content="The research and robotics portfolio of lhddw02, a postgraduate MPhil student.">
+  <meta name="theme-color" content="#f5f5ef">
+  <title>lhddw02 — Research & Robotics</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="portfolio-data.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>This is my first Github Pages site</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="Back to top"><span class="brand-mark" aria-hidden="true">↗</span><span data-profile="name">lhddw02</span><span class="brand-period">.</span></a>
+    <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#about">About</a><a href="#updates">Updates</a></nav>
+    <a class="header-contact" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-profile="role">Postgraduate MPhil student</span></div>
+        <h1 id="hero-heading">Ideas into<br><em>motion.</em><span class="heading-dot" aria-hidden="true">*</span></h1>
+        <p class="hero-intro" id="profile-intro">A space for research, robotics, and the things I’m building along the way.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a><a class="text-link" data-github-link href="https://github.com/lhddw02" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-footnote"><span class="mono">RESEARCH</span><span aria-hidden="true">/</span><span class="mono">ROBOTICS</span><span aria-hidden="true">/</span><span class="mono">EXPERIMENTS</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-topline"><span><span class="tiny-square" aria-hidden="true"></span> THE WORK IN PROGRESS</span><span aria-hidden="true">FIG. 01</span></div>
+        <svg class="robot-sketch" viewBox="0 0 520 355" role="img" aria-labelledby="robot-title">
+          <title id="robot-title">Concept sketch of a robotic arm, from research to iteration</title>
+          <defs><pattern id="hero-grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#ffffff" stroke-opacity=".055"/></pattern><linearGradient id="arm-gradient" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#bded76"/><stop offset="1" stop-color="#e6f9c8"/></linearGradient></defs>
+          <rect width="520" height="355" fill="url(#hero-grid)"/>
+          <ellipse cx="234" cy="299" rx="119" ry="28" fill="none" stroke="#768477"/>
+          <ellipse cx="234" cy="299" rx="77" ry="17" fill="none" stroke="#768477" stroke-dasharray="3 6"/>
+          <path d="M100 183Q150 45 299 56Q400 64 419 172" fill="none" stroke="#9cb09c" stroke-opacity=".7" stroke-dasharray="4 7"/>
+          <path d="M208 284V253H263V284Z" fill="#29362d" stroke="#a5b9a5"/>
+          <path d="M219 254L180 167L251 94L339 126" fill="none" stroke="#4c5e4c" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M219 254L180 167L251 94L339 126" fill="none" stroke="url(#arm-gradient)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M219 254L180 167L251 94L339 126" fill="none" stroke="#29362d"/>
+          <g fill="#18261e" stroke="#dbf3be" stroke-width="2"><circle cx="219" cy="254" r="13"/><circle cx="180" cy="167" r="17"/><circle cx="251" cy="94" r="15"/><circle cx="339" cy="126" r="11"/></g>
+          <g fill="#c6ed91"><circle cx="219" cy="254" r="3"/><circle cx="180" cy="167" r="4"/><circle cx="251" cy="94" r="3"/></g>
+          <path d="M347 126L365 133L357 155M365 133L383 128L394 147" fill="none" stroke="#c6ed91" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M365 183L381 172L399 179L384 190ZM365 183V203L384 212V190M384 212L399 201V179" fill="none" stroke="#bde884" stroke-width="1.5"/>
+          <g fill="none" stroke="#8c9f8c"><path d="M182 148L140 126H76"/><path d="M264 88L306 61H378"/><path d="M245 268L309 271H407"/></g>
+          <g fill="#a1b3a2" font-family="monospace" font-size="10" letter-spacing="1"><text x="76" y="117">01 / RESEARCH</text><text x="306" y="51">02 / PROTOTYPE</text><text x="319" y="290">03 / ITERATE</text></g>
+          <g stroke="#738573"><path d="M42 47H57M49.5 39.5V54.5"/><path d="M453 303H468M460.5 295.5V310.5"/></g>
+        </svg>
+        <div class="visual-bottomline"><div><span class="visual-label">PROJECT INDEX</span><strong><span id="project-count">03</span><span class="visual-small"> / ongoing explorations</span></strong></div><span class="visual-arrow" aria-hidden="true">↗</span></div>
+      </div>
+    </section>
+    <div class="template-note wrap" id="sample-note"><span class="note-dot" aria-hidden="true"></span> Draft portfolio <span aria-hidden="true">·</span> Project descriptions and updates below are examples.</div>
+    <section class="projects-section wrap section-space" id="projects" aria-labelledby="projects-heading">
+      <div class="section-heading"><div><p class="section-number">01 / THE WORK</p><h2 id="projects-heading">Selected projects<span class="accent-period">.</span></h2></div><p class="section-caption">From questions to prototypes.<br>A few things in progress.</p></div>
+      <div class="project-toolbar"><div class="project-filters" role="group" aria-label="Filter projects by status"><button class="filter-button active" data-filter="all" aria-pressed="true">All projects <span id="all-count">3</span></button><button class="filter-button" data-filter="Building" aria-pressed="false">Building</button><button class="filter-button" data-filter="Released" aria-pressed="false">Released</button><button class="filter-button" data-filter="Exploring" aria-pressed="false">Exploring</button></div><span class="mono toolbar-note">ALWAYS A WORK IN PROGRESS ↙</span></div>
+      <div class="project-grid" id="project-grid"></div>
+      <p class="empty-state" id="empty-state" hidden>No projects with this status yet. Explore the other projects.</p>
+      <span class="sr-only" id="filter-announcement" aria-live="polite"></span>
+      <noscript><p class="empty-state">Enable JavaScript to view the editable project collection and updates.</p></noscript>
+    </section>
+    <section class="about-section wrap section-space" id="about" aria-labelledby="about-heading">
+      <div class="about-copy"><p class="section-number">02 / A LITTLE CONTEXT</p><h2 id="about-heading">Curiosity is<br>the starting point<span class="accent-period">.</span></h2><p id="profile-about"></p><div class="about-signature"><span class="signature-mark" id="profile-initials" aria-hidden="true">↗</span><div><strong data-profile="name">lhddw02</strong><span data-profile="role">Postgraduate MPhil student</span></div></div><div class="profile-meta" id="profile-meta" hidden></div></div>
+      <div class="focus-list" id="focus-list"></div>
+    </section>
+    <section class="updates-section" id="updates" aria-labelledby="updates-heading">
+      <div class="wrap section-space"><div class="section-heading"><div><p class="section-number">03 / THE BUILD LOG</p><h2 id="updates-heading">Small steps. New progress<span class="accent-period">.</span></h2></div><span class="log-badge"><span class="status-dot" aria-hidden="true"></span> Latest project notes</span></div><div class="updates-list" id="updates-list"></div><p class="updates-footnote">An ongoing record of ideas, experiments, and project milestones.</p></div>
+    </section>
+    <section class="contact-section wrap section-space" id="contact" aria-labelledby="contact-heading"><div><p class="section-number">04 / START A CONVERSATION</p><h2 id="contact-heading">Good ideas start<br>with a <em>hello.</em></h2><p>Interested in research, robotics, or building something together?</p></div><div class="contact-actions" id="contact-actions"><a class="button button-dark" data-github-link href="https://github.com/lhddw02" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer wrap"><p>© <span id="copyright-year">2026</span> <span data-profile="name">lhddw02</span></p><p class="footer-note">Curiosity. Code. Continuous iteration.</p><a href="#">Back to top <span aria-hidden="true">↑</span></a></footer>
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-shell"><button class="dialog-close" aria-label="Close project notes">×</button><div id="dialog-content"></div></div></dialog>
 </body>
 </html>
