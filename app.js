@@ -63,17 +63,38 @@
 
   const art = (project, index) => {
     const variant = ['signal','relay','fieldnotes'].includes(project.visual) ? project.visual : 'signal';
+    // Local image paths also work when opening index.html directly from disk.
+    // Absolute links may use HTTPS. Unsupported schemes fall back to a sketch.
+    let image = '';
+    const imagePath = String(project.image || '').trim();
+    if (imagePath) {
+      try {
+        const url = new URL(imagePath, document.baseURI);
+        const isRelative = !/^[a-z][a-z0-9+.-]*:/i.test(imagePath) && !imagePath.startsWith('//');
+        if (url.protocol === 'https:' || (isRelative && ['http:','file:'].includes(url.protocol))) image = url.href;
+      } catch { /* Leave the built-in visual in place. */ }
+    }
+    const imageFit = project.imageFit === 'contain' ? 'contain' : 'cover';
     const illustrations = {
       signal: `<svg viewBox="0 0 540 350" aria-hidden="true"><defs><pattern id="project-grid-${index}" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#889e74" stroke-opacity=".12"/></pattern></defs><rect width="540" height="350" fill="url(#project-grid-${index})"/><g fill="none" stroke="#a5b494"><ellipse cx="270" cy="178" rx="106" ry="106"/><ellipse cx="270" cy="178" rx="151" ry="68" transform="rotate(-30 270 178)"/><ellipse cx="270" cy="178" rx="151" ry="68" transform="rotate(30 270 178)"/><path d="M105 178H435M270 57V299" stroke-dasharray="3 6"/></g><g transform="translate(232 130)"><path d="M0 24L40 0L80 24L40 48Z" fill="#d2e6b8" stroke="#677e51"/><path d="M0 24V72L40 96V48Z" fill="#aec791" stroke="#677e51"/><path d="M40 48V96L80 72V24Z" fill="#718959" stroke="#677e51"/></g><g fill="#45652c"><circle cx="390" cy="126" r="5"/><circle cx="139" cy="213" r="4"/><circle cx="270" cy="72" r="4"/></g><g fill="#6c7c5e" font-family="monospace" font-size="8" letter-spacing="1"><text x="407" y="122">QUESTION</text><text x="48" y="232">EXPERIMENT</text><text x="282" y="67">DISCOVERY</text></g></svg>`,
       relay: `<svg viewBox="0 0 540 260" aria-hidden="true"><g fill="none" stroke="#a4b5ad"><path d="M74 171L126 107L201 157L276 75L347 125L430 66"/><path d="M74 171H457M126 107V195M201 157V195M276 75V195M347 125V195M430 66V195" stroke-dasharray="3 5"/></g><g fill="#cedcd2" stroke="#708b79"><rect x="107" y="87" width="38" height="38" transform="rotate(9 126 106)"/><rect x="257" y="56" width="38" height="38" transform="rotate(9 276 75)"/><rect x="411" y="47" width="38" height="38" transform="rotate(9 430 66)"/></g><path d="M74 171L126 107L201 157L276 75L347 125L430 66" fill="none" stroke="#5f806b" stroke-width="2"/><g fill="#f1f5f0" stroke="#5f806b" stroke-width="2"><circle cx="74" cy="171" r="5"/><circle cx="126" cy="107" r="5"/><circle cx="201" cy="157" r="5"/><circle cx="276" cy="75" r="5"/><circle cx="347" cy="125" r="5"/><circle cx="430" cy="66" r="5"/></g><g font-family="monospace" font-size="8" fill="#6c7c73" letter-spacing="1"><text x="70" y="216">OBSERVE</text><text x="245" y="216">INTERPRET</text><text x="415" y="216">LEARN</text></g></svg>`,
       fieldnotes: `<svg viewBox="0 0 540 260" aria-hidden="true"><defs><pattern id="control-grid-${index}" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#978a6e" stroke-opacity=".12"/></pattern></defs><rect width="540" height="260" fill="url(#control-grid-${index})"/><path d="M107 143H173M254 143H320M386 143H429V203H137V163" fill="none" stroke="#9a8b6d" stroke-width="1.5"/><path d="M167 139L173 143L167 147M314 139L320 143L314 147M137 169L133 175M137 169L141 175" fill="none" stroke="#9a8b6d"/><g fill="#f3efe5" stroke="#9b8c70"><rect x="71" y="112" width="67" height="61" rx="3"/><rect x="174" y="100" width="80" height="86" rx="3"/><rect x="321" y="112" width="67" height="61" rx="3"/></g><circle cx="214" cy="143" r="22" fill="#cec5aa" stroke="#9b8c70"/><path d="M199 147L208 136L218 150L230 134" fill="none" stroke="#827152" stroke-width="2"/><g fill="#82765d" font-family="monospace" font-size="8" text-anchor="middle" letter-spacing="1"><text x="104" y="147">INPUT</text><text x="354" y="147">OUTPUT</text><text x="214" y="85">CONTROL LOOP</text></g></svg>`
     };
-    return `<div class="project-art art-${variant}"><div class="art-topline"><span>EXPLORATION ${String(index+1).padStart(2,'0')}</span><span>↗</span></div>${illustrations[variant]}<span class="art-label">${data.sampleContent ? 'CONCEPT SKETCH / EXAMPLE PROJECT' : 'CONCEPT SKETCH'}</span></div>`;
+    return `<div class="project-art art-${variant}${image ? ' has-project-image' : ''}"><div class="art-topline"><span>EXPLORATION ${String(index+1).padStart(2,'0')}</span><span>↗</span></div>${illustrations[variant]}<span class="art-label">${data.sampleContent ? 'CONCEPT SKETCH / EXAMPLE PROJECT' : 'CONCEPT SKETCH'}</span>${image ? `<img class="project-image" src="${escape(image)}" alt="${escape(project.imageAlt || `${project.name} project image`)}" loading="lazy" decoding="async" style="object-fit:${imageFit}">` : ''}</div>`;
   };
   grid.innerHTML = projects.map((project,index) => {
     const latest = sortedUpdates(project)[0];
     return `<article class="project-card ${project.featured ? 'featured' : ''}" id="project-${escape(project.id)}" data-status="${escape(project.status || 'Exploring')}">${art(project,index)}<div class="project-body"><div class="project-meta"><span class="project-category">${escape(project.category)}</span>${status(project.status)}</div><h3>${escape(project.name)}</h3><p class="project-description">${escape(project.description)}</p>${stack(project.stack)}<div class="project-update"><div class="project-update-label"><span>LATEST UPDATE</span>${latest ? `<time datetime="${escape(latest.date)}">${escape(dateLabel(latest.date))}</time>` : ''}</div><p>${escape(latest?.title || 'Project notes coming soon.')}</p></div><div class="project-actions"><button class="project-details-button" data-project-index="${index}" aria-label="Read project notes for ${escape(project.name)}">Project notes <span aria-hidden="true">↗</span></button>${externalLink(project.repo,'Code')}${externalLink(project.demo,'Live demo')}</div><p class="commit-note" id="commit-${index}" hidden></p></div></article>`;
   }).join('');
+  grid.querySelectorAll('.project-image').forEach((image) => {
+    const useSketch = () => {
+      image.parentElement.classList.remove('has-project-image');
+      image.remove();
+    };
+    image.addEventListener('error',useSketch,{once:true});
+    // Cached failures can finish before the listener is attached.
+    if (image.complete && !image.naturalWidth) useSketch();
+  });
   document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
     let visibleCount = 0;
     document.querySelectorAll('[data-filter]').forEach((item) => {

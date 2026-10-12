@@ -4,7 +4,7 @@ window.PORTFOLIO_DATA = {
   profile: {
     name: 'LIU Haodong',
     initials: 'LH',
-    role: 'Postgraduate MPhil student',
+    role: 'Year 2 ECE MPhil student from HKUST',
     intro: 'A space to share my research, robotics projects, and the progress behind them.',
     about: 'I’m a Year 2 Postgraduate MPhil ECE student from HKUST. My research interests are robotics, digital twins and imitation learning. I am now exploring the potential of robotics with LLMs and the ability to imitate human motion.',
     focus: [
@@ -29,16 +29,24 @@ window.PORTFOLIO_DATA = {
       demo: '',
       featured: true,
       visual: 'signal',
+      image: 'assets/projects/72_MR02b-24_FinalPoster_ppt.jpg', // e.g. 'assets/projects/follow-me-robot.jpg'
+      imageAlt: 'The final poster of the FYP', // Describe the image for visitors using a screen reader.
+      imageFit: 'cover', // 'cover' crops to fill; 'contain' shows the whole image.
       updates: [
         {
-          date: '2026-10-12',
-          title: 'Project progress',
-          description: 'Example update: replace this with a recent research milestone and why it matters.'
+          date: '2025-05-12',
+          title: 'Oral Presentation (The end)',
+          description: 'Group Oral Presentation to a panel of judges. We presented our FYP aim and the overall design of our robot. The professors provided useful and insightful comments on our project and design.'
         },
         {
-          date: '2026-09-24',
-          title: 'Project direction',
-          description: 'Example update: describe an earlier step, such as defining the question or planning your next experiment.'
+          date: '2025-05-02',
+          title: 'Industry Day',
+          description: 'We showcase our final product to the industry representatives. We received valuable comments, feedbacks and suggestions from the industry to meet the niche of the market.'
+        },
+        {
+          date: '2025-01-10',
+          title: 'Midterm Poster Presentation',
+          description: 'We have updated our latest progress and communicate with judges and colleagues. We received many useful comments and ideas on improving our project and make our project more practical.'
         }
       ]
     },
@@ -53,6 +61,9 @@ window.PORTFOLIO_DATA = {
       demo: '',
       featured: false,
       visual: 'relay',
+      image: '',
+      imageAlt: '',
+      imageFit: 'cover',
       updates: [
         {
           date: '2026-10-06',
@@ -72,6 +83,9 @@ window.PORTFOLIO_DATA = {
       demo: '',
       featured: false,
       visual: 'fieldnotes',
+      image: '',
+      imageAlt: '',
+      imageFit: 'cover',
       updates: [
         {
           date: '2026-09-28',

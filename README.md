@@ -2,19 +2,39 @@
 
 An editable, technology-focused portfolio for GitHub Pages. The design pairs a warm off-white background with charcoal text, lime accents, and abstract project visuals. It includes a profile, project cards, and a chronological update feed.
 
-This is a static website: no framework, installation, or build step is required. Your display name (`lhddw02`), role (Postgraduate MPhil student), and GitHub profile have been added. The final year project and two robotics cards are temporary placeholders; their suggested topics, statuses, dates, descriptions, and updates are examples. Replace them with your actual project information before presenting them as your work.
+This is a static website: no framework, installation, or build step is required. It is an editable draft; replace any remaining sample project descriptions, statuses, dates, and updates with your actual information.
 
 ## Personalize the content
 
 Edit `portfolio-data.js` to change the content in one place:
 
 - `profile`: your name, introduction, about text, focus areas, and contact details. Your `initials` appear in the About signature; optional `location` and `availability` appear as About details when provided. Empty optional fields stay hidden.
-- `projects`: your project names, descriptions, stacks, status, links, and updates. Rename the suggested perception and control topics to match your robotics projects. Use a unique `id` for each project. The `stack` arrays start empty; add only tools or technologies you actually used.
+- `projects`: your project names, descriptions, stacks, status, links, and updates. Rename any suggested topics to match your projects. Use a unique `id` for each project, and add only tools or technologies you actually used to its `stack` array.
 - `repo` and `demo`: add full `https://` URLs. Project links appear only when a URL is provided.
 - `visual`: choose `signal`, `relay`, or `fieldnotes` for the built-in abstract artwork.
+- `image`, `imageAlt`, and `imageFit`: add your own project photo, screenshot, or diagram as described below.
 - `sampleContent`: change to `false` after replacing all example content to remove the sample-content notice.
 
 Keep quotes and commas intact when editing JavaScript. Use an apostrophe inside a double-quoted string, or escape it with `\'` inside a single-quoted string.
+
+### Add a project image
+
+Store your project images in [`assets/projects/`](assets/projects/README.md). For example, after adding your own image file named `follow-me-robot.jpg`, add these fields to the existing **Follow-me Robot** project object in `portfolio-data.js`:
+
+```js
+image: 'assets/projects/follow-me-robot.jpg',
+imageAlt: 'Replace with a description of your Follow-me Robot image',
+imageFit: 'cover',
+```
+
+The filename above is an example; the image is not included. Replace `imageAlt` with a short description of what your actual image shows so that screen-reader users can understand it.
+
+- Use repository-relative paths with forward slashes, such as `assets/projects/follow-me-robot.jpg`. Do not use a Windows path such as `C:\Users\...`.
+- Match filenames and extensions exactly, including capitalization. GitHub Pages filenames are case-sensitive.
+- JPG, PNG, and WebP are suitable formats. As a starting point, aim for about 1600 pixels wide and under 1 MB per image to keep loading quick.
+- `imageFit: 'cover'` fills the visual area and may crop the edges. Use `imageFit: 'contain'` to show the whole image, which is useful for diagrams. `cover` is the default.
+
+A provided image replaces the built-in sketch. Leave `image: ''` to use the sketch selected by `visual`; if an image file is missing or cannot load, the sketch appears as a fallback. Include the image file when committing and publishing your changes.
 
 ### Keep projects up to date
 
@@ -46,7 +66,7 @@ The browser uses GitHub’s public API without a token; see the [List commits AP
 - `index.html`: section structure, navigation, and page metadata. Update its page title and description for your name and work.
 - `app.js`: rendering, filtering, and optional GitHub integration.
 
-The abstract visuals are part of the template and require no image downloads. You can replace them with project screenshots when you have your own assets.
+The abstract visuals are part of the template and require no image downloads. Use the project image fields above to replace them with your own assets.
 
 ## Preview locally
 
