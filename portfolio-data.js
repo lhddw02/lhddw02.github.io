@@ -2,29 +2,29 @@
 // below are examples. Keep sampleContent true until you replace them.
 window.PORTFOLIO_DATA = {
   profile: {
-    name: 'lhddw02',
+    name: 'LIU Haodong',
     initials: 'LH',
     role: 'Postgraduate MPhil student',
     intro: 'A space to share my research, robotics projects, and the progress behind them.',
-    about: 'I’m a postgraduate MPhil student. Add a short introduction to your research interests, what you are exploring, and what you want to learn next. Replace this placeholder with your own story.',
+    about: 'I’m a Year 2 Postgraduate MPhil ECE student from HKUST. My research interests are robotics, digital twins and imitation learning. I am now exploring the potential of robotics with LLMs and the ability to imitate human motion.',
     focus: [
-      { label: 'Research', detail: 'Add your research area or a question you are exploring.' },
+      { label: 'Research', detail: 'robotics, digital twins and imitation learning.' },
       { label: 'Robotics', detail: 'Describe the robotics topics that interest you.' },
       { label: 'Learning', detail: 'Share one area you are currently developing.' }
     ],
     github: 'https://github.com/lhddw02',
-    email: '',
-    location: '',
+    email: 'lhddw02@gmail.com',
+    location: 'HKSAR',
     availability: ''
   },
   projects: [
     {
       id: 'final-year-project',
-      name: 'Final year project',
-      category: 'Research',
-      description: 'A placeholder for your final year research project. Add its question, your approach, and what you learned or built.',
+      name: 'Follow-me Robot',
+      category: 'Application Project',
+      description: 'The Follow-me Robot aims to track a specific target to assist and stand-by to the target using UWB technology with automatic obsticle avoidance system.  Add its question, your approach, and what you learned or built.',
       stack: [],
-      status: 'Building',
+      status: 'Finished',
       repo: '',
       demo: '',
       featured: true,
